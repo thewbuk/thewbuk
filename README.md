@@ -7,7 +7,7 @@
 
 - 👨‍💻 All of my projects are available at [thewb.uk](thewb.uk)
 
-- 📫 How to reach me **contact@thewb.uk**
+- 📫 You can reach me **contact@thewb.uk**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
