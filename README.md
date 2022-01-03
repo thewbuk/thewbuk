@@ -1,6 +1,7 @@
 <h1 align="center">Hi 👋, I'm Wojciech Bandzerewicz</h1>
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
+
 - 🔭 I’m currently working on [CodeFlow - AI learning platform](codeflow.uk)
 
 - 🌱 I’m currently learning **ML, React and Swift**
