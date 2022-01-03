@@ -10,6 +10,8 @@
 
 - 📫 You can reach me **contact@thewb.uk**
 
+- [Link to Google](https://www.google.com) 
+
 <h3 align="center">Connect with me:</h3>
 <br>
 <p align="center">
