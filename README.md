@@ -2,7 +2,7 @@
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
 
-- 🔭 I’m currently working on [CodeFlow - AI learning platform](codeflow.uk)
+- 🔭 I’m currently working on <a href="codeflow.uk"> CodeFlow - AI learning platform </a>
 
 - 🌱 I’m currently learning **ML, React and Swift**
 
