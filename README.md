@@ -2,15 +2,14 @@
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
 
-- 🔭 I’m currently working on <a href="codeflow.uk"> CodeFlow - AI learning platform </a>
+- 🔭 I’m currently working on [CodeFlow - AI learning platform](https://www.codeflow.uk)
 
 - 🌱 I’m currently learning **ML, React and Swift**
 
-- 👨‍💻 All of my projects are available at [thewb.uk](thewb.uk)
+- 👨‍💻 All of my projects are available at [thewb.uk](https://www.thewb.uk)
 
 - 📫 You can reach me **contact@thewb.uk**
 
-- [Link to Google](https://www.google.com) 
 
 <h3 align="center">Connect with me:</h3>
 <br>
