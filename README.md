@@ -30,4 +30,6 @@
     <img height="370em" src="https://github-readme-streak-stats.herokuapp.com/?user=thewbuk&theme=prussian" alt="thewbuk" /></p>
 </div>
 <br>
+<div>
 ![snake animation](https://github.com/<seu user name>/<seu user name>/blob/output/github-contribution-grid-snake2.svg)
+ </div>
