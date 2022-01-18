@@ -29,3 +29,5 @@
   <img height="200em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=thewbuk&layout=compact&langs_count=7&theme=prussian"/>
     <img height="370em" src="https://github-readme-streak-stats.herokuapp.com/?user=thewbuk&theme=prussian" alt="thewbuk" /></p>
 </div>
+<br>
+![snake animation](https://github.com/<seu user name>/<seu user name>/blob/output/github-contribution-grid-snake2.svg)
