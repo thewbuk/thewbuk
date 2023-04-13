@@ -2,7 +2,7 @@
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
 
-- 🔭 I’m currently working on [CodeFlow - AI learning platform](https://www.codeflow.uk)
+- 🔭 I’m currently working on [CodeFlow - AI learning platform](https://www.codeflow.app)
 
 - 🌱 I’m currently learning **ML, React and Swift**
 
@@ -16,6 +16,7 @@
 <p align="center">
 <a href="https://linkedin.com/in/wojciech-bandzerewicz-7867a0195" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="wojciech-bandzerewicz-7867a0195" height="30" width="40" /></a>
 <a href="https://instagram.com/thewbuk" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="thewbuk" height="30" width="40" /></a>
+<a href="https://thewb.uk" target="blank"><img align="center" src="https://cdn-icons-png.flaticon.com/512/8901/8901502.png" alt="thewbuk" height="30" width="40" /></a>
 </p>
 <br>
 <h3 align="center">Languages and Tools:</h3>
