@@ -4,11 +4,11 @@
 
 - 🔭 I’m currently working on [CodeFlow - AI learning platform](https://www.codeflow.app)
 
-- 🌱 I’m currently learning **ML, React and Swift**
+- 🌱 I’m currently working with **AI, Python and NextJS**
 
 - 👨‍💻 All of my projects are available at [thewb.uk](https://www.thewb.uk)
 
-- 📫 You can reach me **contact@thewb.uk**
+- 📫 Feel free to [reach out](mailto:contactthewb@gmail.com)
 
 
 <h3 align="center">Connect with me:</h3>
