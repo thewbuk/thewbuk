@@ -2,9 +2,9 @@
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
 
-- 🔭 I’m currently working on [CodeFlow - AI learning platform](https://www.codeflow.app)
+- 🔭 I’m currently working on [Synthia - TV of the Internet](https://synthia.tv/)
 
-- 🌱 I’m currently working with **AI, Python and NextJS**
+- 🌱  **AI, Python and NextJS**
 
 - 👨‍💻 All of my projects are available at [thewb.uk](https://www.thewb.uk)
 
