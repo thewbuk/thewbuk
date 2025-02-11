@@ -2,7 +2,7 @@
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
 
-- 🔭 I’m currently working on [Synthia - TV of the Internet](https://synthia.tv/)
+- 🔭 I’m currently working on [Scoutly - Hire smart](https://scoutly.tech/)
 
 - 🌱  **AI, Python and NextJS**
 
