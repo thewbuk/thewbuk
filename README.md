@@ -2,7 +2,7 @@
 <h3 align="center">A passionate software developer from the UK</h3>
 <br>
 
-- 🔭 I’m currently working on [Scoutly - Hire smart](https://scoutly.tech/)
+- 🔭 I’m currently working on [neverthink](https://)
 
 - 🌱  **AI, Python and NextJS**
 
