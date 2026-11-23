@@ -10,7 +10,7 @@ const login = process.env.PROFILE_LOGIN ?? "thewbuk";
 
 const q = `query($login:String!){user(login:$login){
   contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount contributionLevel}}}}
-  repositories(ownerAffiliations:OWNER,first:100){totalCount nodes{isFork languages(first:10,orderBy:{field:SIZE,direction:DESC}){edges{size node{name}}}}}
+  repositories(ownerAffiliations:OWNER,first:100){nodes{isFork languages(first:10,orderBy:{field:SIZE,direction:DESC}){edges{size node{name}}}}}
 }}`;
 const res = await fetch("https://api.github.com/graphql", {
   method: "POST",
@@ -35,7 +35,7 @@ for (const r of u.repositories.nodes) {
 const total = Object.values(bytes).reduce((a, b) => a + b, 0) || 1;
 const top = Object.entries(bytes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, v]) => [n, Math.round((v / total) * 100)]);
 
-// The Actions token only sees public repos, so in CI keep the repo count and
+// The Actions token only sees public repos, so in CI keep the
 // languages from the last full local run (GITHUB_TOKEN=$(gh auth token) bun scripts/stats.ts).
 const file = join(import.meta.dir, "..", "data", "stats.json");
 const publicOnly = process.env.STATS_SCOPE === "public";
@@ -44,10 +44,11 @@ const prev = publicOnly && existsSync(file) ? JSON.parse(readFileSync(file, "utf
 const stats = {
   total: cal.totalContributions,
   longest,
-  repos: prev?.repos ?? u.repositories.totalCount,
+  active: days.filter((d) => d.contributionCount > 0).length,
+  days: days.length,
   levels: days.map((d) => LEVEL[d.contributionLevel] ?? 0),
   firstDow: new Date(days[0].date).getUTCDay(),
   top: prev?.top ?? top,
 };
 write(join(import.meta.dir, "..", "data"), "stats.json", JSON.stringify(stats, null, 1) + "\n");
-console.log(`contributions ${stats.total}, longest streak ${longest}, repos ${stats.repos}, top ${JSON.stringify(top)}`);
+console.log(`contributions ${stats.total}, longest streak ${longest}, active ${stats.active}/${stats.days}, top ${JSON.stringify(top)}`);

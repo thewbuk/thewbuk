@@ -119,13 +119,13 @@ ${T(label, (w - 4) / 2, 36, 15, "pixel", BG, "middle")}`;
 
 /* ── stats ── */
 function stats() {
-  const st = JSON.parse(readFileSync(join(ROOT, "data", "stats.json"), "utf8")) as { total: number; longest: number; repos: number; levels: number[]; firstDow: number; top: [string, number][] };
+  const st = JSON.parse(readFileSync(join(ROOT, "data", "stats.json"), "utf8")) as { total: number; longest: number; active: number; days: number; levels: number[]; firstDow: number; top: [string, number][] };
   const pal = [S, "#2F5E5E", "#3A9C9A", C, Y];
   const cells = st.levels.map((lv, i) => {
     const k = i + st.firstDow;
     return `<rect x="${40 + Math.floor(k / 7) * 16}" y="${50 + (k % 7) * 16}" width="12" height="12" fill="${pal[lv]}"/>`;
   }).join("");
-  const nums: [string, string][] = [["HI-SCORE", st.total.toLocaleString("en-GB")], ["BEST STREAK", `${st.longest} DAYS`], ["REPOS", String(st.repos)]];
+  const nums: [string, string][] = [["HI-SCORE", st.total.toLocaleString("en-GB")], ["BEST STREAK", `${st.longest} DAYS`], ["ACTIVE DAYS", `${st.active} / ${st.days}`]];
   let lx = 40;
   const bar = st.top.map(([n, v], i) => {
     const w = Math.max(12, Math.round(((v / 100) * 1120) / 12) * 12);
@@ -136,7 +136,7 @@ function stats() {
   const body = `<rect width="1200" height="300" fill="${BG}"/>${cells}
 ${nums.map(([l, v], i) => T(l, 910, 66 + i * 60, 14, "pixel", [C, Y, R][i]) + T(v, 910, 96 + i * 60, 22, "pixel", FG)).join("")}
 ${bar}${scan(1200, 300)}`;
-  return svg(1200, 300, body, "", `${st.total} contributions in the last year, longest streak ${st.longest} days, ${st.repos} repositories`);
+  return svg(1200, 300, body, "", `${st.total} contributions in the last year, longest streak ${st.longest} days, active on ${st.active} of ${st.days} days`);
 }
 
 /* ── stack ── */
