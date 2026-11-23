@@ -4,3 +4,6 @@ preview-*.html
 assets/
 scripts/img/
 scripts/preview.ts
+scripts/activity.ts
+scripts/fonts/jetbrains-*
+scripts/fonts/space-grotesk-*

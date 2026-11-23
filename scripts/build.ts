@@ -4,6 +4,7 @@ import * as si from "simple-icons";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { T, svg, write, rng, textWidth } from "./lib";
+import { header as gameHeader } from "./header";
 
 const ROOT = join(import.meta.dir, "..");
 const OUT = join(ROOT, "svg");
@@ -148,7 +149,7 @@ function stack() {
   return svg(W, 100, body, css, ICONS.map((ic) => ic.title).join(", "));
 }
 
-write(OUT, "header.svg", header());
+write(OUT, "header.svg", gameHeader());
 APPS.forEach((a, i) => write(OUT, `${a.slug}.svg`, cartridge(a, i)));
 LINKS.forEach((l, i) => write(OUT, `btn-${l.slug}.svg`, button(l.label, i)));
 write(OUT, "stats.svg", stats());
