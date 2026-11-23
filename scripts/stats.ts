@@ -2,6 +2,7 @@
 // Needs GITHUB_TOKEN (the Actions token is enough). Locally: GITHUB_TOKEN=$(gh auth token) bun scripts/stats.ts
 import { write } from "./lib";
 import { join } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
 
 const token = process.env.GITHUB_TOKEN;
 if (!token) throw new Error("GITHUB_TOKEN missing");
@@ -34,13 +35,19 @@ for (const r of u.repositories.nodes) {
 const total = Object.values(bytes).reduce((a, b) => a + b, 0) || 1;
 const top = Object.entries(bytes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, v]) => [n, Math.round((v / total) * 100)]);
 
+// The Actions token only sees public repos, so in CI keep the repo count and
+// languages from the last full local run (GITHUB_TOKEN=$(gh auth token) bun scripts/stats.ts).
+const file = join(import.meta.dir, "..", "data", "stats.json");
+const publicOnly = process.env.STATS_SCOPE === "public";
+const prev = publicOnly && existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : null;
+
 const stats = {
   total: cal.totalContributions,
   longest,
-  repos: u.repositories.totalCount,
+  repos: prev?.repos ?? u.repositories.totalCount,
   levels: days.map((d) => LEVEL[d.contributionLevel] ?? 0),
   firstDow: new Date(days[0].date).getUTCDay(),
-  top,
+  top: prev?.top ?? top,
 };
 write(join(import.meta.dir, "..", "data"), "stats.json", JSON.stringify(stats, null, 1) + "\n");
 console.log(`contributions ${stats.total}, longest streak ${longest}, repos ${stats.repos}, top ${JSON.stringify(top)}`);
