@@ -1,0 +1,6 @@
+node_modules
+preview/
+preview-*.html
+assets/
+scripts/img/
+scripts/preview.ts

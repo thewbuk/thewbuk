@@ -1,0 +1,7 @@
+{
+  "name": "thewbuk-profile",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "bun scripts/build.ts", "activity": "bun scripts/activity.ts" },
+  "dependencies": { "opentype.js": "1.3.4", "simple-icons": "16.38.1" }
+}
