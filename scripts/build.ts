@@ -68,14 +68,32 @@ function cartridge(a: (typeof APPS)[number], i: number) {
     css = `.on{animation:on 2.4s steps(1) infinite}@keyframes on{0%{opacity:1}12%{opacity:0}16%,100%{opacity:1}}
 .off{opacity:0;animation:off 2.4s steps(1) infinite}@keyframes off{0%{opacity:0}12%{opacity:1}16%,100%{opacity:0}}`;
   } else if (a.art === "map") {
-    const r = rng(4), cells: string[] = [];
-    for (let j = 0; j < 12; j++) {
+    // A pixel map poster: city blocks, a few streets, one avenue, a river and a park.
+    // It prints in row by row, then a pin drops on it.
+    const COLS = 24, ROWS = 20, CELL = 9, mx = 300 - (COLS * CELL) / 2, my = 56;
+    const r = rng(7);
+    const streetRows = [3, 8, 14, 18], streetCols = [4, 10, 15, 20];
+    const rows: string[] = [];
+    for (let j = 0; j < ROWS; j++) {
       let row = "";
-      for (let k = 0; k < 18; k++) row += j === 6 + (k % 3 === 0 ? 1 : 0) ? "W" : k % 4 === 0 || j % 4 === 0 ? "S" : r() > 0.7 ? "B" : ".";
-      cells.push(row);
+      for (let k = 0; k < COLS; k++) {
+        const river = Math.abs(j - (11 + Math.sin(k / 3.2) * 2.4)) < 1.1;
+        const avenue = Math.abs(k - (2 + j * 1.05)) < 0.6;
+        const park = k >= 16 && k <= 19 && j >= 4 && j <= 7;
+        if (river) row += "W";
+        else if (park) row += "G";
+        else if (streetRows.includes(j) || streetCols.includes(k) || avenue) row += "S";
+        else row += r() > 0.45 ? "B" : "b";
+      }
+      rows.push(row);
     }
-    art = `${px(cells, 156, 60, 16, { S: FG, B: "#3A3554", W: col })}<rect class="cur" x="300" y="140" width="16" height="16" fill="${R}"/>`;
-    css = `.cur{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}`;
+    const map = { S: "#CFC9DA", B: "#3A3554", b: "#2E2A44", W: C, G: "#2F9E6B" };
+    art = `<rect x="${mx - 10}" y="${my - 10}" width="${COLS * CELL + 20}" height="${ROWS * CELL + 20}" fill="${FG}"/>
+<rect x="${mx - 4}" y="${my - 4}" width="${COLS * CELL + 8}" height="${ROWS * CELL + 8}" fill="${BG}"/>
+${rows.map((row, j) => `<g class="pr" style="animation-delay:${(j * 0.08).toFixed(2)}s">${px([row], mx, my + j * CELL, CELL, map)}</g>`).join("")}
+<g class="pin">${px([".RRR.", "RRWRR", "RRRRR", ".RRR.", "..R.."], mx + 12 * CELL - 10, my + 6 * CELL - 30, 5, { R, W: FG })}</g>`;
+    css = `.pr{opacity:0;animation:pr 8s steps(1) infinite}@keyframes pr{0%{opacity:0}2%,88%{opacity:1}100%{opacity:0}}
+.pin{opacity:0;animation:pin 8s infinite}@keyframes pin{0%,24%{opacity:0;transform:translateY(-40px)}30%{opacity:1;transform:none}34%{transform:translateY(-8px)}38%,86%{opacity:1;transform:none}90%,100%{opacity:0}}`;
   } else if (a.art === "shelf") {
     const r = rng(19);
     let x = 152, k = 0;
