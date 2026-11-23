@@ -62,9 +62,15 @@ function cartridge(a: (typeof APPS)[number], i: number) {
   const W = 600, H = 420, col = [C, Y, R, C][i];
   let art = "", css = "";
   if (a.art === "tv") {
-    const on = ["..X....X..", "...X..X...", "XXXXXXXXXX", "XAAAAAAAAX", "XAAPAAAAAX", "XAAPPAAAAX", "XAAPPPAAAX", "XAAPPAAAAX", "XAAPAAAAAX", "XXXXXXXXXX"];
-    const off = ["..X....X..", "...X..X...", "XXXXXXXXXX", "XBABABABAX", "XABABABABX", "XBABABABAX", "XABABABABX", "XBABABABAX", "XABABABABX", "XXXXXXXXXX"];
-    art = `<g class="on">${px(on, 220, 70, 16, { X: FG, A: S, P: col })}</g><g class="off">${px(off, 220, 70, 16, { X: FG, A: S, B: DIM })}</g>`;
+    // 14 x 15 TV, symmetric about its centre; play triangle centred in the screen
+    const top = ["...X......X...", "....X....X....", ".....X..X.....", "XXXXXXXXXXXXXX"];
+    const legs = ["XXXXXXXXXXXXXX", ".XX........XX."];
+    const play = ["AAAAAAAAAAAA", "AAAAPAAAAAAA", "AAAAPPAAAAAA", "AAAAPPPAAAAA", "AAAAPPPPAAAA", "AAAAPPPAAAAA", "AAAAPPAAAAAA", "AAAAPAAAAAAA", "AAAAAAAAAAAA"];
+    const noise = play.map((_, j) => Array.from({ length: 12 }, (_, k) => ((j + k) % 2 ? "B" : "A")).join(""));
+    const on = [...top, ...play.map((r) => `X${r}X`), ...legs];
+    const off = [...top, ...noise.map((r) => `X${r}X`), ...legs];
+    const cell = 14, tx = 300 - (14 * cell) / 2, ty = 165 - (on.length * cell) / 2;
+    art = `<g class="on">${px(on, tx, ty, cell, { X: FG, A: S, P: col })}</g><g class="off">${px(off, tx, ty, cell, { X: FG, A: S, B: DIM })}</g>`;
     css = `.on{animation:on 2.4s steps(1) infinite}@keyframes on{0%{opacity:1}12%{opacity:0}16%,100%{opacity:1}}
 .off{opacity:0;animation:off 2.4s steps(1) infinite}@keyframes off{0%{opacity:0}12%{opacity:1}16%,100%{opacity:0}}`;
   } else if (a.art === "map") {
