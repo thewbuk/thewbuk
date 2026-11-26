@@ -1,8 +1,8 @@
 {
- "total": 2588,
+ "total": 2607,
  "longest": 100,
- "active": 363,
- "days": 368,
+ "active": 364,
+ "days": 369,
  "levels": [
   1,
   1,
@@ -371,6 +371,7 @@
   2,
   2,
   3,
+  2,
   1
  ],
  "firstDow": 0,
